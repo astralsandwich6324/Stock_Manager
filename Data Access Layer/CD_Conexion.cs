@@ -10,7 +10,7 @@ namespace Data_Access_Layer
 {
     public class CD_Conexion
     {
-        private SqlConnection Conexion = new SqlConnection("Server=(local);DataBase=Stock_Manager;Integrated Security=true");
+        private SqlConnection Conexion = new SqlConnection("Data Source=ANSTRALSANDWICH\\SQLEXPRESS;Initial Catalog=Stock_Manager;Integrated Security=True;Encrypt=False");
 
         public SqlConnection AbrirConexion()
         {

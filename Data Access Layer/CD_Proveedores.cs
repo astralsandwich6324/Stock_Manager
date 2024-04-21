@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data;
-using System.Data.SqlClient;
 
 namespace Data_Access_Layer
 {
-    public class CD_Productos
+    public class CD_Proveedores
     {
         private CD_Conexion conexion = new CD_Conexion();
         SqlDataReader leer;
@@ -19,7 +19,7 @@ namespace Data_Access_Layer
         public DataTable Mostrar()
         {
             comando.Connection = conexion.AbrirConexion();
-            comando.CommandText = "MostrarProductos";
+            comando.CommandText = "MostrarSuplidora";
             comando.CommandType = CommandType.StoredProcedure;
             leer = comando.ExecuteReader();
             tabla.Load(leer);
@@ -28,48 +28,48 @@ namespace Data_Access_Layer
         }
 
 
-        public void Insertar(string nombre, string codigoDeBarras, string descripcion, int cantidad, int idSuplidor, int stock)
+        public void Insertar(string nombre, string email, string telefono, string direccion, string detallesbanco, int taxid)
         {
             //Procedimiento
 
             comando.Connection = conexion.AbrirConexion();
-            comando.CommandText = "InsertarProducto";
+            comando.CommandText = "InsertarSuplidor";
             comando.CommandType = CommandType.StoredProcedure;
             comando.Parameters.AddWithValue("@Nombre", nombre);
-            comando.Parameters.AddWithValue("@CodigoDeBarras", codigoDeBarras);
-            comando.Parameters.AddWithValue("@Descripcion", descripcion);
-            comando.Parameters.AddWithValue("@Cantidad", cantidad);
-            comando.Parameters.AddWithValue("@IdSuplidor", idSuplidor);
-            comando.Parameters.AddWithValue("@Stock", stock);
+            comando.Parameters.AddWithValue("@Email", email);
+            comando.Parameters.AddWithValue("@Telefono", telefono);
+            comando.Parameters.AddWithValue("@Address", direccion);
+            comando.Parameters.AddWithValue("@BankDetails", detallesbanco);
+            comando.Parameters.AddWithValue("@TaxID", taxid);
             comando.ExecuteNonQuery();
             comando.Parameters.Clear();
         }
 
-        public void Editar(string nombre, string codigoDeBarras, string descripcion, int cantidad, int idSuplidor, int stock, int id)
+        public void Editar(string nombre, string email, string telefono, string direccion, string detallesbanco, int taxid, int id)
         {
 
             comando.Connection = conexion.AbrirConexion();
-            comando.CommandText = "EditarProducto";
+            comando.CommandText = "ActualizarSuplidor";
             comando.CommandType = CommandType.StoredProcedure;
             comando.Parameters.AddWithValue("@Nombre", nombre);
-            comando.Parameters.AddWithValue("@CodigoDeBarras", codigoDeBarras);
-            comando.Parameters.AddWithValue("@Descripcion", descripcion);
-            comando.Parameters.AddWithValue("@Cantidad", cantidad);
-            comando.Parameters.AddWithValue("@IdSuplidor", idSuplidor);
-            comando.Parameters.AddWithValue("@Stock", stock);
-            comando.Parameters.AddWithValue("@IdProducto", id);
+            comando.Parameters.AddWithValue("@Email", email);
+            comando.Parameters.AddWithValue("@Telefono", telefono);
+            comando.Parameters.AddWithValue("@Address", direccion);
+            comando.Parameters.AddWithValue("@BankDetails", detallesbanco);
+            comando.Parameters.AddWithValue("@TaxID", taxid);
+            comando.Parameters.AddWithValue("@IdSuplidor", id);
             comando.ExecuteNonQuery();
             comando.Parameters.Clear();
         }
 
         public void Eliminar(int id)
         {
-            comando.Connection=conexion.AbrirConexion();
-            comando.CommandText = "EliminarProducto";
+            comando.Connection = conexion.AbrirConexion();
+            comando.CommandText = "EliminarSuplidor";
             comando.CommandType = CommandType.StoredProcedure;
 
 
-            comando.Parameters.AddWithValue("@IdProducto", id);
+            comando.Parameters.AddWithValue("@IdSuplidor", id);
 
             comando.ExecuteNonQuery();
 

@@ -159,22 +159,22 @@ namespace Restaurante_Inventario
 
         private void button10_Click(object sender, EventArgs e)
         {
-            Submenureportes.Visible = false;
+            
         }
 
         private void botonreporteventas_Click(object sender, EventArgs e)
         {
-            Submenureportes.Visible = false;
+            
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            Submenureportes.Visible = true;
+            
         }
 
         private void botonreportecompras_Click(object sender, EventArgs e)
         {
-            Submenureportes.Visible = false;
+            
         }
 
         private void Submenureportes_Paint(object sender, PaintEventArgs e)
@@ -184,12 +184,17 @@ namespace Restaurante_Inventario
 
         private void button1_Click(object sender, EventArgs e)
         {
-            AbrirFormInPanel(new ventas());
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             AbrirFormInPanel(new Clientes());
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            AbrirFormInPanel(new Proveedores());
         }
     }
 }

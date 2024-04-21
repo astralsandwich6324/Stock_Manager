@@ -8,23 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Restaurante_Inventario
+namespace Reportes
 {
-    public partial class ventas : Form
+    public partial class Report : Form
     {
-        public ventas()
+        public Report()
         {
             InitializeComponent();
         }
 
-        private void ventas_Load(object sender, EventArgs e)
+        private void printPreviewControl1_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
     }
 }
